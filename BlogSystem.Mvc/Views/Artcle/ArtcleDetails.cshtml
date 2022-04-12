@@ -1,0 +1,177 @@
+﻿@model BlogSystem.Dto.ArticleDto
+
+@{
+    ViewBag.Title = "ArtcleDetails";
+}
+
+<h2>ArtcleDetails</h2>
+
+<div>
+    <h4>ArticleDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Content)*@
+            @Html.Raw(Model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodCount)
+        </dt>
+
+        <dd>
+            <i>
+                @Html.DisplayFor(model => model.GoodCount)</ i >
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BadCount)
+        </dt>
+
+        <dd>
+
+
+            @Html.DisplayFor(model => model.BadCount)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Html.DisplayFor(model => model.ImagePath)" />
+        </dd>
+        <dt>
+            类别
+        </dt>
+
+
+        @foreach (var item in Model.CategoryNames)
+        {
+            <dd class="CategoryNames">@item</dd>
+        }
+
+
+    </dl>
+</div>
+<p>
+    <button onclick="BtnAdd()">点赞</button>
+    <button onclick="BadCount()">反对</button>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+    <input type="text" name="txtComment" id="txtComment" value="" />
+    <button onclick="addComment()"> 添加评论</button>
+</p>
+<ul>
+    @foreach (var comment in ViewBag.Comments)
+    {
+        <li>
+            <span>@comment.Content</span>
+            <br />
+            <span>@comment.Email @comment.CreateTime</span>
+        </li>
+    }
+
+</ul>
+
+@section headers
+{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        var artcleid = '@Model.Id'
+        function BtnAdd() {
+            $.ajax({
+                url: '/Artcle/GoodCount/' + artcleid,
+                type: 'post',
+                success: function (data) {
+                    //$("i").text(data.result);
+                    console.log(data);
+                    //alert(data.result);
+                }
+            }).done(function () {
+                window.location.reload();
+            }).reload(true);
+        }
+        function BadCount() {
+            $.ajax({
+                url: '/Artcle/BadCount/' + artcleid,
+                type: 'post',
+                success: function (data) {
+                    alert(data);
+                }
+            }).done(function () {
+
+            })
+        }
+
+
+
+
+         function addComment(){
+            $.ajax({
+                url: '/Artcle/AddComment',
+                type: 'post',
+                data: {
+                    Id: '@Model.Id',
+                    Content: $("#txtComment").val()
+                }
+                //, success: function (ka) {
+                //        alert(ka);
+                //    }
+
+          ,  }).done(() => {
+                alert("添加评论成功");
+                location.reload();
+            });
+        }
+
+           
+     
+    
+
+
+
+
+    </script>
+    <style>
+        img {
+            width: 80px;
+        }
+
+        .CategoryNames {
+            float: left;
+            margin: 0px 3px !important;
+            padding: 0px;
+        }
+    </style>
+}

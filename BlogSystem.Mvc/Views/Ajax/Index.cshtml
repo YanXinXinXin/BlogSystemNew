@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<label>账号</label>
+<input type="text" name="name" value="" id="name" />
+<label>密码</label>
+<input type="text" name="pwd" value="" id="pwd" />
+<input type="button" name="btn" value="登录" onclick="Login()" />
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    function Login() {
+        var datastring = { name: $('#name').val(), pwd: $('#pwd').val() };
+        //$.ajax(function () {
+        //    url: 'ajax/index',
+        //        type: "get",
+
+        //});
+        
+        $.ajax({
+            url: '/ajax/Login',
+            type: 'get',
+            async: true,
+            data: datastring,
+            success: function (result) {
+                //console.log(result);
+                alert('成功');
+                data2();
+            }
+        })
+        //    .fail(
+        //    alert('失败')
+        //)
+        data2();
+    }
+    function data2() {
+        alert('调用了data2方法');
+    }
+</script>

@@ -1,0 +1,139 @@
+﻿@model IEnumerable<BlogSystem.Dto.ArticleDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackStageMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="layui-table" lay-skin="line">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BadCount)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Status)
+        </th>
+        <th>
+            操作
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr >
+            <td class="Shuju">
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BadCount)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @{
+                    if (item.Status)
+                    {
+                        <button disabled="disabled">审批通过</button>
+                    }
+                    else
+                    {
+                        <button>未审批</button>
+                    }
+                }
+
+
+            </td>
+            <td>
+             
+           
+                <a href="/Artcle/ArtcleDetails2?id=@item.Id" class="layui-btn layui-btn-warm" style="border-radius:34%">详情</a>
+                <i class="layui-icon layui-icon-ok " style="font-size: 30px; color: red;">
+                </i>
+                <button class="ShenHe" title="@item.Id">审核</button>
+
+
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+@section Scripts{
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+     <script>
+
+         $('.ShenHe').on('click', function () {
+             var temp = this;
+             console.log(aid);
+             var aid = $('.ShenHe').attr('title');
+             $.ajax({
+                 url: '/BackStage/Review',
+                 type: 'get',
+                 data: {
+                     id: aid
+                 },
+                 success: function (data) {
+                     layer.alert('审核成功', { icon: 1 });
+
+                     //  $('.sp_SH').disabled ="disabled";
+                     //console.log($(temp).parent().parent().parent());
+
+                     // console.log($(temp).parent().parent().html());
+                     $(temp).parent().parent().remove();
+                 }
+
+             }).done(() => {
+
+             })
+         })
+
+         function ShenHe(aid) {
+             
+             
+         }
+     </script>
+}

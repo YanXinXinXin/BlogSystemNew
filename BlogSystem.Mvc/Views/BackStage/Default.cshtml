@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Default";
+    Layout = "~/Views/Shared/_BackStageMaster.cshtml";
+}
+@*<style>
+        .C_content_left {
+            width: 500px;
+            border: 1px solid red;
+        }
+        .C_content_right {
+            width: 500px;
+            border: 1px solid blue;
+        }
+    </style>*@
+<div style="display:flex">
+    
+    <div class="C_content_left">
+        <p>快捷方式</p>
+        <a href="/BackStage/UserInfo">
+            <i class="layui-icon layui-icon-user" style="font-size: 50px;"></i>
+            <cite>用户</cite>
+        </a>
+
+    </div>
+    <div class="C_content_right">
+        <a href="/BackStage/index">
+            <h3>代办事项</h3> <p>审核帖子</p>
+            <cite>@ViewBag.ArtcleCount</cite>
+        </a>
+       
+    </div>
+</div>
+
+@section headers
+{
+    <style>
+        .C_content_left {
+            width: 500px;
+            height:500px;
+            border: 1px solid red;
+        }
+
+        .C_content_right {
+            height: 500px;
+            width: 500px;
+            border: 1px solid blue;
+        }
+    </style>
+}

@@ -1,0 +1,287 @@
+﻿@model BlogSystem.Dto.ArticleDto
+
+@{
+    ViewBag.Title = "ArtcleDetails2";
+}
+
+<h2>ArtcleDetails2</h2>
+
+<div>
+    <h4>ArticleDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BadCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BadCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Html.DisplayFor(model => model.ImagePath)" />
+        </dd>
+        <dt>
+            类别
+        </dt>
+
+
+        @foreach (var item in Model.CategoryNames)
+        {
+            <dd class="CategoryNames">  @item</dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+  <p  id="focusUser" title="@ViewBag.userId" ><button title="@Html.DisplayFor(model => model.UserId)" id="UserId" onclick="FansAdd(this)">关注作者</button></p>
+<div>
+    @foreach (var comment in ViewBag.Comments)
+    {
+        <div class="user">
+            <a href="#">@comment.Email</a>
+        </div>
+        <p  id="cId" title="@comment.Id">@comment.Content</p>
+    <div class="info">
+        <span> @comment.CreateTime</span><span> <a id="BtnReply" onclick="BtnReply()" title="">回复</a> </span>
+    </div>
+    <div class="reply-box">
+          @@回复   :@comment.Email
+         @foreach (var reply in ViewBag.Reply)
+         {
+             <div> <span>@reply.Content</span><span>@reply.Email</span> <span> @reply.CreateTime</span> </div>
+         }
+    </div>
+    <div id="Reply">
+        <input type="text" name="reply" id="reply" value="" /> <button onclick="AddReply()" title="@ViewBag.userId" id="btnreply">发表评论</button>
+    </div>
+    }
+    @*<ul>
+            @foreach (var comment in ViewBag.Comments)
+            {
+                <li>
+                    <span id="cId" title="@comment.Id" onclick="ShowTime()">@comment.Content</span>
+                    <br />
+
+                    <span>@comment.Email @comment.CreateTime </span>   <span> <a id="BtnReply" onclick="BtnReply()">回复</a> </span>
+                    <br />
+
+                </li>
+                //var commentIds = @comment.Id;
+                <li id="Reply"><div> <input type="text" name="reply" id="reply" value="" /> <button onclick="AddReply()" title="@ViewBag.userId" id="btnreply">发表评论</button></div> </li>
+            }
+        </ul>*@
+</div>
+
+
+
+<h3>--------------------------------------------</h3>
+
+
+<h3> --------------------------留言区--------------------</h3>
+<input type="text" name="txtComment" id="txtComment" value="" />
+<button onclick="addComment()"> 添加评论</button>
+@section headers
+{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Reply.js"></script>
+    <style>
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+
+        #BtnReply {
+        }
+
+        #Reply {
+            width: 300px;
+            height: 60px;
+            border: 1px solid red;
+            display: none;
+        }
+
+            #Reply textarea {
+                width: 300px;
+                height: 60px;
+                border: 1px dashed yellow;
+            }
+    </style>
+
+    <script>
+        //关注作者
+        function FansAdd(btn) {
+
+            $.ajax({
+                url: '/Fans/Create/',
+                type: 'get',
+                data: {
+                    userId: $("#UserId").attr("title"),
+                    focusUserId: $("#focusUser").attr("title"),
+                },
+                success: function (data) {
+                    console.log(btn);
+                    btn.disabled = true;
+                    console.log(data);
+                }
+
+            }).done(() => {
+
+            })
+        }
+          function addComment(){
+            $.ajax({
+                url: '/Artcle/AddComment',
+                type: 'post',
+                data: {
+                    Id: '@Model.Id',
+                    Content: $("#txtComment").val()
+                }
+                //, success: function (ka) {
+                //        alert(ka);
+                //    }
+
+          ,  }).done(() => {
+                alert("添加评论成功");
+                location.reload();
+            });
+        }
+
+         function AddReply(){
+            $.ajax({
+                url: '/Artcle/CreateReply/',
+                type: 'post',
+                data: {
+                    userId: $("#btnreply").attr("title"),
+                    arecleId: '@Model.Id',
+                    Content: $("#reply").val(),
+                    commentIds: $("#cId").attr("title")
+                }
+
+          ,  }).done(() => {
+                alert("添加评论成功");
+                location.reload();
+            });
+        }
+        function ShowTime() {
+            var data = $("#cId").attr("title");
+            console.log(data);
+            // alert(va);
+        }
+
+
+
+    </script>
+
+
+    @*<script>
+         function addComment(){
+            $.ajax({
+                url: '/Artcle/AddComment',
+                type: 'post',
+                data: {
+                    Id: '@Model.Id',
+                    Content: $("#txtComment").val()
+                }
+                //, success: function (ka) {
+                //        alert(ka);
+                //    }
+
+          ,  }).done(() => {
+                alert("添加评论成功");
+                location.reload();
+            });
+        }
+
+
+
+
+    </script>*@
+    @*<script>
+          function AddReply(){
+            $.ajax({
+                url: '/Artcle/CreateReply',
+                type: 'post',
+                data: {
+                    userId=@ViewBag.userId,
+                    arecleId: '@Model.Id',
+                    Content: $("#reply").val(),
+                    commentIds: $("#cId").attr("title")
+                }
+                //, success: function (ka) {
+                //        alert(ka);
+                //    }
+
+          ,  }).done(() => {
+                alert("添加评论成功");
+                location.reload();
+            });
+        }
+        function ShowdTime() {
+            var va = $("#cId").attr("title");
+            console.log(va);
+            // alert(va);
+        }
+    </script>*@
+
+    @*<script>
+            $(function () {
+                function kawayi() {
+                      var va = $("#cId").attr("title").html();
+                console.log(va);
+                alert(va);
+                }
+                //var va = $("#cId").attr("title").html();
+                //console.log(va);
+                //alert(va);
+            })
+        </script>*@
+}

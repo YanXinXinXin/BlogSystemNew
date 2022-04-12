@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui.form小例子</title>
+    <link rel="stylesheet" href="layui.css" media="all">
+
+    <link href="~/layui-v2.6.7/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/layui-v2.6.7/layui/layui.js"></script>
+</head>
+<body>
+    <form class="layui-form" action="">
+      
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入框</label>
+            <div class="layui-input-block">
+                <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">下拉选择框</label>
+            <div class="layui-input-block">
+                <select name="interest" lay-filter="aihao">
+                    <option value="0">写作</option>
+                    <option value="1">阅读</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">复选框</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[write]" title="写作">
+                <input type="checkbox" name="like[read]" title="阅读">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开关关</label>
+            <div class="layui-input-block">
+                <input type="checkbox" lay-skin="switch">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开关开</label>
+            <div class="layui-input-block">
+                <input type="checkbox" checked lay-skin="switch">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="0" title="男" lay-filter="Sex">
+                <input type="radio" name="sex" value="1" title="女" lay-filter="Sex" checked>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">请填写描述</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="frombtnfilte">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        
+    </form>
+    <script src="layui.js"></script>
+    <script>
+layui.use('form', function(){
+    var form = layui.form;
+
+    form.on('select(aihao)', function (data) {
+        console.log(data.elem); //得到select原始DOM对象
+        console.log(data.value,'下拉选择框'); //得到被选中的值
+    });
+
+    form.on('radio(Sex)', function (data) {
+        console.log(data.elem); //得到radio原始DOM对象
+        console.log(data.value,'单选框的值'); //被点击的radio的value值
+    });
+
+
+    form.on('submit(frombtnfilte)', function (data) {
+       // console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+      //  console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+        console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+       return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+
+});
+    </script>
+</body>
+</html>

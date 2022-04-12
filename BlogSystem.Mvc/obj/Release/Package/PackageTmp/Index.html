@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .erroClass {
+            border: 1px solid red;
+        }
+
+        .BgInput {
+            border: 3px solid yellow;
+        }
+    </style>
+    <script>
+        $(function () {
+           
+            //$(':reset').addClass('erroClass');
+            //console.log($(''));
+            ////console.log($('input:name'));
+            ////console.log($('input:name').html());
+            //console.log($('div'));
+            //console.log($('table tr'), 'table tr');
+            //console.log($('.MinDiv>input'), '.MivDiv>input');
+
+            //$('.MinDiv>input').addClass('erroClass');
+
+            //console.log($("label + input"), 'label + input:匹配所有跟在 label 后面的 input 元素');
+
+            //console.log($('form~input'));
+
+            //console.log($('.table tr:first').html());
+            //console.log($('.table tr:eq(0)').html());
+
+            //console.log($(':text'));
+            //console.log($(':radio'));
+
+            //console.log($('input[type=checkbox]:not(:checked)'));
+
+            //console.log($('tr:even'));
+            //console.log($('tr:odd'));
+
+            //console.log($('tr:gt(0)'));
+            //console.log($('tr:lt(2)'));
+
+            //console.log($('div p:contains("一")').html());
+            //$('td:empty').addClass('erroClass');
+            //$('div:has(p)').addClass('erroClass');//一个用于筛选的选择器
+
+            //console.log($('td:parent'));
+            //console.log($("div:hidden"),'查找隐藏的Div');
+            ////: not(: visible)
+            //console.log($('.table tr:visible'));
+            //console.log($('.table tr:not(:visible)'));
+
+
+            //console.log($("tr[id]"));
+
+            //console.log($("input[name!='xhe']"), '查找所有name属性不是xhe的input 元素');
+
+            //console.log($('.table tr td:nth-child(odd)').text(), '匹配其父元素下的第N个子或奇元素');
+            //console.log($('.table tr td:nth-child(even)').text(), '匹配其父元素下的第N个子或偶元素');
+
+            //console.log($("input[type='checkbox']").prop("checked"));
+
+
+
+            $("div").add("<span>啊哈哈哈</span>");
+            //$("#select").add('<option value="4">4</option>');
+
+            //禁用页面上的所有复选框。
+            $("input[type='checkbox']").prop({
+                disabled: true
+            });
+
+
+            var text = $('input[type=text]');
+            console.log(text);
+            console.log($('.MinDiv input[type=text]'));
+            $('div~input').addClass('erroClass');
+
+            $('#txtName').focus();
+            $('#txtName').blur(function () {
+                //console.log($('tr').eq(1).html());
+                //console.log($('table').children().html());
+            });
+            //$('input:name')
+
+            $('#select').change(function () {
+                //alert($('#select').val());
+                // $('#select option').attr("selected","selected");
+            })
+            $('table tr').on('click', function () {
+                console.log($(this).html());
+            })
+
+        });
+        var list = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        function Select() {
+            $('#tr').parent().html();
+        };
+        function ShowBtn() {
+            if ($("div:hidden").length > 0) {
+                $("div:hidden").removeAttr("hidden");
+
+            }
+        }
+        function LoginBtn() {
+            //$("select option:selected");
+            //console.log($("select option:selected"));
+            // console.log($("tr:eq(1)").html());
+
+            //for (var i = 0; i < list.length; i++) {
+            //    //console.log(list[i]);
+            //}
+            //$.each(list, function (i, n) {
+            //    console.log(i, n);
+            //})s
+
+            $.each($('input[type=text]'), function (i, n) {
+
+                console.log(i, n.value);
+            })
+        }
+        function CeShi() {
+            alert();
+            //$("h3").add("<span>Again</span>");
+            var data = $("h3").add("#CeShi input").add("#CeShi p").add("#CeShi span");
+
+            $("h3").add("#CeShi input").add("#CeShi p").add("#CeShi span").css("background-color", "yellow");
+            //console.log($('#CeShi').html());
+        }
+        function hasClass() {
+            $.each($('#CeShi input[type=text]'), function (i, n) {
+                console.log(n.name.length);
+                // console.log(n.classList);
+          
+                for (var j = 0; j < n.name.length; j++) {
+                    if (n.classList != ".BgInput") {
+                        $('#CeShi input[type=text]').addClass('BgInput');
+                    }
+                }
+            });
+            $('#CeShi li').has('ul').addClass('BgInput');
+
+            console.log($('#CeShi input[type=text]').parent().is('div'));
+            var data = [];
+          data = $('#CeShi input[type=text]').map(function () {
+                //console.log($(this));
+                //console.log($(this).val());
+                return $(this).val();
+
+          });
+
+            $('#CeShi input[type=text]').not($('#haha'));
+            console.log($('#CeShi input[type=text]').not($('#haha')));
+            console.log(data);
+            console.log($('#CeShi input[type=text]').get(3));
+            console.log($('#CeShi').html());
+
+          
+            //$('#CeShi p').append($('#CeShi input[type=text]').map(function () {
+            //    console.log($(this));
+            //    console.log($(this).val());
+            //    return $(this).val();
+                
+            //}));
+
+
+        }
+        function del() {
+
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <form>
+            <label>Name:</label>
+            <input name="name" />
+            <fieldset>
+                <label>Newsletter:</label>
+                <input name="newsletter" />
+            </fieldset>
+        </form>
+        <input type="text" name="name1" value="" />
+        <input type="text" name="name2" value="" />
+        <div class="MinDiv">
+            <label>账号</label>
+            <input type="text" name="txtName" value="" id="txtName" />
+            <label>密码</label>
+            <input type="text" name="txtPwd" value="" />
+            <label>确定密码</label>
+            <input type="text" name="SurePwd" value="" />
+            <label>选择性别</label>
+            <input type="radio" name="sex" value="男" />男
+            <input type="radio" name="sex" value="女" />女
+            <label>兴趣爱好</label>
+            <input type="checkbox" name="che" value="吃" checked="checked" />吃
+            <input type="checkbox" name="che" value="喝" />喝
+            <input type="checkbox" name="che" value="玩" />玩
+            <input type="checkbox" name="che" value="乐" />乐
+
+            <select id="select">
+                <option value="1">1</option>
+                <option value="2" selected="selected">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <input type="button" name="name" onclick="LoginBtn()" value="注册" />
+        </div>
+
+
+        <div>
+            <input type="text" name="Testtext" value="" />
+            <input type="button" name="btn" value="显示按钮" onclick="ShowBtn()" />
+        </div>
+
+
+        <div>
+            <table class="table table-bordered table-hover">
+                <tr class="tr">
+                    <th>编号</th>
+                    <th>名字</th>
+                </tr>
+                <tr id="tr">
+                    <td>1</td>
+                    <td>卡哇伊</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>nice</td>
+                </tr>
+                <tr style="display:none">
+                    <td>3</td>
+                    <td>three</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <p>第一句话</p>
+            <p>第二句话</p>
+            <p>第三句话</p>
+        </div>
+
+    </div>
+    <div hidden="hidden">
+        <p>隐藏了</p>
+    </div>
+    <from style="width:500px;height:500px">
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </from>
+    <div id="foont">
+        <input type="checkbox" name="xhe" value="一" />一
+        <input type="checkbox" name="xhe" value="二" checked="checked" />二
+        <input type="checkbox" name="xhe" value="三" />三
+        <input type="checkbox" name="xhe" value="四" />四
+        <input type="reset" name="reset" value="重置按钮" />
+        <!--<span>啊哈哈哈</span>-->
+
+    </div>
+    <div id="CeShi">
+        <h3>测试</h3>
+        <input type="button" name="CeShi" value="ADD按钮" onclick="CeShi()" />
+        <p>Hello</p>
+        <input type="text" value="" class="BgInput" name="name" id="haha" />   <input type="text" value="" name="name" />   <input type="text" value="" name="name" />
+        <!--<span class=".bgcolor">1</span> <span class=".bgcolor">2</span> <span>3</span>-->
+        <input type="button" name="hasbtn" value="测试按钮" onclick="hasClass()" />
+        <ul>
+            <li>list item 1</li>
+            <li>
+                list item 2
+                <ul>
+                    <li>list item 2-a</li>
+                    <li>list item 2-b</li>
+                </ul>
+            </li>
+            <li>list item 3</li>
+            <li>list item 4</li>
+        </ul>
+        <p>values:</p>
+     
+    </div>
+    <div id="">
+        <!--<span class=".bgcolor">1</span> <span class=".bgcolor">2</span> <span>3</span>
+        <input type="button" name="hasbtn" value="hasClass" onclick="hasClass()" />-->
+    </div>
+</body>
+</html>
