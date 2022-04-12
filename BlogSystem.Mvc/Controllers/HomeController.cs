@@ -151,5 +151,9 @@ namespace BlogSystem.Mvc.Controllers
             //var result = await userManger.GetAllUsers();
             return View();
         }
+
+
+
+
     }
 }
