@@ -74,7 +74,7 @@ namespace BlogSystem.BLL
         }
         public async Task<UserInformationDto> GetUserByEmail(string email)
         {
-            using (IDAL.IUserService userService = new DAL.UserService())
+            using (IDAL.IUserService userService = new DAL.UserService()) 
             {
                 if (await userService.GetAllAsync().AnyAsync(s => s.Email == email))
                 {

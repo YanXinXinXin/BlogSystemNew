@@ -291,6 +291,10 @@
       <Project>{e9b7235d-471d-417e-a513-59a2ad19883f}</Project>
       <Name>BlogSystem.IBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{4ED1AC59-6538-4C95-8161-F6D2093EEFEE}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

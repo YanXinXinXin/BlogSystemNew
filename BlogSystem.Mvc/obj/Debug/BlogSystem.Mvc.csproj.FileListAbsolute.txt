@@ -156,3 +156,5 @@ E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Debug\Blo
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Debug\BlogSystem.Mvc.csproj.AssemblyReference.cache
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Library.dll
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Library.pdb
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Service.dll
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Service.pdb

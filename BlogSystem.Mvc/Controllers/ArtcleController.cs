@@ -81,11 +81,12 @@ namespace BlogSystem.Mvc.Controllers
         {
             //需要给页面前端，总页码数，当前页码，可显示总页码数量
             var artcleMgr = new ArticleManger();
-            var artcles = await artcleMgr.GetAllArticlesByUserId(Guid.Parse(Session["userId"].ToString()), pageIndex, pageSize);
-            var dataCount = await artcleMgr.GetDataCount(Guid.Parse(Session["userId"].ToString()));
+            var artcless = await artcleMgr.GetArticle();
+            //var artcles = await artcleMgr.GetAllArticlesByUserId(Guid.Parse(Session["userId"].ToString()), pageIndex, pageSize);
+            var dataCount = await artcleMgr.GetDataCount();
             ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
             ViewBag.PageIndex = pageIndex;
-            return View(artcles);
+            return View(artcless);
         }
         [HttpGet]
         public async Task<ActionResult> ArtcleList2(int pageIndex = 1, int pageSize = 5)

@@ -2,6 +2,7 @@
 using BlogSystem.IBLL;
 using BlogSystem.Mvc.Filters;
 using BlogSystem.Mvc.Models;
+using Service.Mdoel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,7 @@ namespace BlogSystem.Mvc.Controllers
 
                     if (userType==0)
                     {
-                        return RedirectToAction("index","home");
+                        return RedirectToAction("ArtcleList", "Artcle");
                     }
                     else
                     {
@@ -153,7 +154,58 @@ namespace BlogSystem.Mvc.Controllers
         }
 
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
 
+        //public JsonModel LoginNew(Models.UserViewModels.LoginViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        IBLL.IUserManger userManger = new UserManger();
+        //        Guid userId;
+        //        int userType;
+        //        if (userManger.Login(model.Email, model.LoginPwd, out userId, out userType))
+        //        {
+        //            // 跳转 判断是用Session还是cookie
+        //            if (model.RememberMe)
+        //            {
+        //                Response.Cookies.Add(new HttpCookie("loginName")
+        //                {
+        //                    Value = model.Email,
+        //                    Expires = DateTime.Now.AddHours(1)
+        //                });
+        //                Response.Cookies.Add(new HttpCookie("userId")
+        //                {
+        //                    Value = userId.ToString(),
+        //                    Expires = DateTime.Now.AddHours(1)
+        //                });
+        //            }
+        //            else
+        //            {
+        //                Session["loginName"] = model.Email;
+        //                Session["userId"] = userId;
+        //            }
+
+        //            if (userType == 0)
+        //            {
+        //                return RedirectToAction("index", "home"); //主页
+        //            }
+        //            else
+        //            {
+        //                return RedirectToAction("index", "backstage"); //进入后台
+        //            }
+        //            //return RedirectToAction(nameof(Index));
+
+
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "你的账户密码有误");
+        //        }
+
+        //    }
+        //    return View(model);
+        //}
 
     }
 }

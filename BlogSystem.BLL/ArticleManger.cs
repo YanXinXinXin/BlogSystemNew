@@ -209,6 +209,15 @@ namespace BlogSystem.BLL
                 return await articleService.GetAllAsync().CountAsync(s => s.UserId == userId);
             }
         }
+        //获取总页码数
+        public async Task<int> GetDataCount()
+        {
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                //总条数
+                return await articleService.GetAllAsync().CountAsync();
+            }
+        }
 
         public async Task CreateComment(Guid userId, Guid artcleId, string Content)
         {
@@ -295,7 +304,7 @@ namespace BlogSystem.BLL
                            //GoodCount = s.GoodCount,
                            //Email = s.User.Email,
 
-                           //CreateTime = s.CreateTime,
+                           CreateTime = s.CreateTime,
                            Id = s.Id,
                            Status=s.Status
                            //ImagePath = s.User.ImagePath
