@@ -78,3 +78,5 @@ E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Release\B
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Release\BlogSystem.Mvc.csproj.CopyComplete
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Release\BlogSystem.Mvc.dll
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\obj\Release\BlogSystem.Mvc.pdb
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Service.dll
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\BlogSystem.Mvc\bin\Service.pdb
