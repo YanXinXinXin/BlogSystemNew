@@ -5,18 +5,41 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using WebAPI.Models;
+using WebAPI.Tools;
 
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/values")]
-    [EnableCors(origins:"*",headers:"*",methods:"*")] //跨域
+    [EnableCors(origins: "*", headers: "*", methods: "*")] //跨域
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        [Route("")]
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            return "world";
         }
+        [HttpPost]
+        [Route("login")]
+        public string Login(UserViewModel data)
+        {
+            if (data.LoginName.Length > 2 && data.Password == "123456")
+            {
+                return JwtTools.Encode(new Dictionary<string, object>() {
+                    {"loginName",data.LoginName} 
+                }, JwtTools.key);
+            }
+            throw new Exception("账号密码有误");
+        }
+        [HttpGet]
+        [Route("getInfo")]
+        public string GetUserInfo()
+        {
+            var username = JwtTools.ValideLogined(ControllerContext.Request.Headers);
+            return "用户资料"+ username;
+        }
+        // GET api/values
+        
 
         // GET api/values/5
         public string Get(int id)

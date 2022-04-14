@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JWT加密技术Test</title>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script>
+        function btnLogin() {
+            let name = document.getElementById("loginName").value;
+            let pwd = document.getElementById("loginPwd").value;
+            $.ajax({
+                url: "http://localhost:50987/api/values",
+                type: "post",
+                data: {
+                    LoginName: name,
+                    Password:pwd
+                }
+            }).done(function (data) {
+                if (data) {
+                    sessionStorage.setItem("token", data);
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+        function btnGetUserInfo() {
+            $.ajax({
+                url: "http://localhost:50987/api/values/getInfo",
+                type: "get",
+                headers: {
+                    token: 'afdsfas'
+                }
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function (err) {
+                console.log(err);
+            })
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="loginName" >
+    <input type="text" name="loginPwd" >
+    <button onclick="btnLogin()">登陆</button>
+    <button onclick="btnGetUserInfo()">获取当前的用户信息</button>
+</body>
+</html>

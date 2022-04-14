@@ -5,6 +5,7 @@ using JWT.Serializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web;
 
 namespace WebAPI.Tools
@@ -12,7 +13,7 @@ namespace WebAPI.Tools
     public class JwtTools
     {
 
-       readonly static  string key = System.Web.Configuration.WebConfigurationManager.AppSettings["name"];
+       public static  string key = System.Web.Configuration.WebConfigurationManager.AppSettings["name"];
        /// <summary>
        /// Jwt加密
        /// </summary>
@@ -29,6 +30,12 @@ namespace WebAPI.Tools
 
             return encoder.Encode(payload, key);//开始加密
         }
+
+        internal static object ValideLogined(HttpRequestHeaders headers)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Jwt解密
         /// </summary>

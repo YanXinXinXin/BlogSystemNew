@@ -10,3 +10,15 @@ E:\MVC实战项目\Mvc项目个人博客\BlogSystem\JWT\obj\Debug\JWT.csproj.Cor
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\JWT\obj\Debug\JWT.csproj.CopyComplete
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\JWT\obj\Debug\JWT.exe
 E:\MVC实战项目\Mvc项目个人博客\BlogSystem\JWT\obj\Debug\JWT.pdb
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\JWT.exe.config
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\JWT.exe
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\JWT.pdb
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\JWT.dll
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\Newtonsoft.Json.dll
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\JWT.xml
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\bin\Debug\Newtonsoft.Json.xml
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\obj\Debug\JWT.csproj.AssemblyReference.cache
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\obj\Debug\JWT.csproj.CoreCompileInputs.cache
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\obj\Debug\JWT.csproj.CopyComplete
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\obj\Debug\JWT.exe
+F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\JWT\obj\Debug\JWT.pdb
