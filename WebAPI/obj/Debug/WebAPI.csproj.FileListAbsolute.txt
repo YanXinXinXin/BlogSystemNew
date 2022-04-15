@@ -77,3 +77,5 @@ F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\WebAPI\bin
 F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\WebAPI\obj\Debug\WebAPI.dll
 F:\学习哦\自学\项目\vs博客源码\搞起来\new\BlogSystemNew\WebAPI\obj\Debug\WebAPI.pdb
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\WebAPI\obj\Debug\WebAPI.dll
+E:\MVC实战项目\Mvc项目个人博客\BlogSystem\WebAPI\obj\Debug\WebAPI.pdb
